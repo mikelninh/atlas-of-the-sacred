@@ -8,8 +8,9 @@
 
 ### [Enter Atlas of the Sacred](https://atlas-of-the-sacred.vercel.app)
 
-The current experience includes:
+The current public experience includes:
 
+- the Living Centre and four purpose paths: Remember, Cooperate, Heal and Awaken;
 - the common human story connecting sacred sites without flattening their differences;
 - an interactive cross-cultural connection engine;
 - a deep Giza construction journey;
@@ -18,6 +19,16 @@ The current experience includes:
 - a guided journey through the Great Pyramid’s interior;
 - evidence labels separating established knowledge, interpretation and open mystery;
 - a browser-generated sound and resonance demonstration.
+
+## V1.0 release program
+
+The first complete public release is targeted for **22 September 2026**, with a closed beta on **8 September 2026**.
+
+- [Read the V1.0 release plan](docs/V1_RELEASE_PLAN.md)
+- [Track the master release issue](https://github.com/mikelninh/atlas-of-the-sacred/issues/8)
+- [Start with Gate 1: production source of truth](https://github.com/mikelninh/atlas-of-the-sacred/issues/1)
+
+V1.0 will not mean “every sacred site.” It will mean one complete, trustworthy experience: enter through a human need, complete **The Common Thread**, go deep at **Giza**, inspect the evidence, and return seeing civilisation differently.
 
 ## Product direction
 
@@ -34,9 +45,9 @@ The long-term product combines:
 
 ## Repository status
 
-The public field edition lives in [`site/index.html`](site/index.html). It is deployed to Vercel and also includes a GitHub Pages workflow for a future mirror at `mikelninh.github.io/atlas-of-the-sacred/` once Pages is enabled in the repository settings.
+The public Living Centre edition lives in [`site/index.html`](site/index.html) and is served through the existing Vercel URL.
 
-The larger Next.js production foundation—with reusable site, claim, source, journey and editorial components—is preserved separately while its reviewed modules are progressively brought into this repository.
+The preserved V0.5 Next.js application has been validated locally with **22 claims, 18 sources and 22 resolved claim references**. Importing that complete application into this repository and connecting it directly to Vercel is V1.0 Gate 1.
 
 ## Editorial principle
 
