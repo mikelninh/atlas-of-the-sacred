@@ -15,17 +15,6 @@
     "report:editorial": "node scripts/editorial-report.mjs",
     "quality": "npm run validate:content && npm run report:editorial && npm run typecheck && npm run lint"
   },
-  "dependencies": {
-    "next": "^16.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "^22.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "eslint": "^9.0.0",
-    "eslint-config-next": "^16.0.0",
-    "typescript": "^5.8.3"
-  }
+  "dependencies": {"next": "^16.0.0", "react": "^19.0.0", "react-dom": "^19.0.0"},
+  "devDependencies": {"@types/node": "^22.0.0", "@types/react": "^19.0.0", "@types/react-dom": "^19.0.0", "eslint": "^9.0.0", "eslint-config-next": "^16.0.0", "typescript": "^5.8.3"}
 }
