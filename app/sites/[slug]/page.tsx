@@ -9,6 +9,8 @@ import { NileLandscape } from "@/components/giza/NileLandscape";
 import { RoyalComplexMap } from "@/components/giza/RoyalComplexMap";
 import { CardinalAlignment } from "@/components/giza/CardinalAlignment";
 import { InteriorJourney } from "@/components/giza/InteriorJourney";
+import { GizaExpeditionIntro } from "@/components/giza/GizaExpeditionIntro";
+import { GizaReturn } from "@/components/giza/GizaReturn";
 import { ClaimCard } from "@/components/claim/ClaimCard";
 
 export function generateStaticParams() {
@@ -28,6 +30,14 @@ const modules = {
   alignment: CardinalAlignment,
   interior: InteriorJourney,
 } as const;
+
+const moduleDescriptions: Record<string, string> = {
+  construction: "Follow what the evidence can document—from quarry and water logistics to settlement—and stop where the complete raising sequence disappears.",
+  "nile-landscape": "Recover a river-connected world hidden beneath the modern desert view, without turning reconstruction into certainty.",
+  "royal-complex": "Walk from the riverward edge toward the pyramid and see the monument as one part of a connected ritual landscape.",
+  alignment: "Feel the difference between the measured result and the debated method used to achieve it.",
+  interior: "Move through known passages and scientifically detected spaces while keeping discovery separate from explanation.",
+};
 
 export default async function SitePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -61,13 +71,24 @@ export default async function SitePage({ params }: { params: Promise<{ slug: str
   return (
     <>
       <SiteHero site={site} />
-      <nav className="chapter-nav" aria-label="Giza chapters">
+      <GizaExpeditionIntro />
+      <nav className="chapter-nav chapter-nav-v2" aria-label="Giza chapters">
         {site.modules.map((module) => <a href={`#${module.id}`} key={module.id}><span>{module.eyebrow}</span>{module.title}</a>)}
       </nav>
       {site.modules.map((module) => {
         const Module = modules[module.id as keyof typeof modules];
-        return <section className="site-chapter" id={module.id} key={module.id}><div className="chapter-heading"><p className="eyebrow">{module.eyebrow}</p><h2>{module.title}</h2></div><Module /></section>;
+        return (
+          <section className={`site-chapter giza-v2-chapter chapter-${module.id}`} id={module.id} key={module.id}>
+            <div className="chapter-heading chapter-heading-v2">
+              <p className="eyebrow">{module.eyebrow}</p>
+              <h2>{module.title}</h2>
+              <p>{moduleDescriptions[module.id]}</p>
+            </div>
+            <Module />
+          </section>
+        );
       })}
+      <GizaReturn />
       <section className="evidence-registry" id="evidence">
         <div className="chapter-heading"><p className="eyebrow">Traceable knowledge</p><h2>Giza evidence registry</h2><p>Every factual statement used by the portal appears below with its sources, review date, interpretation and limits.</p></div>
         <div className="registry-grid">{uniqueClaims.map((claim) => <ClaimCard claim={claim} key={claim.id} />)}</div>
