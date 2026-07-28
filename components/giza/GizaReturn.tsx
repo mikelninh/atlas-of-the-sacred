@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function GizaReturn() {
   return (
     <section className="giza-return" id="return">
@@ -8,7 +10,7 @@ export function GizaReturn() {
         possible when a society aligns material, organisation, imagination and time around what it considers eternal.
       </p>
       <div className="giza-return-actions">
-        <a className="button button-primary" href="/journeys/common-thread/">Continue the Common Thread</a>
+        <Link className="button button-primary" href="/journeys/common-thread/">Continue the Common Thread</Link>
         <a className="button button-ghost" href="#evidence">Inspect every claim</a>
       </div>
       <div className="giza-share-thesis">
