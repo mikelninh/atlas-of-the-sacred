@@ -1,0 +1,58 @@
+name: Install production source v0.4
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - bootstrap/v0.4/READY
+
+permissions:
+  contents: write
+
+concurrency:
+  group: install-production-source-v04
+  cancel-in-progress: false
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct verified source archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat bootstrap/v0.4/source.zip.b64.part* | base64 --decode > /tmp/atlas-source.zip
+          unzip -t /tmp/atlas-source.zip
+          rm -rf /tmp/atlas-source
+          mkdir -p /tmp/atlas-source
+          unzip -q /tmp/atlas-source.zip -d /tmp/atlas-source
+
+      - name: Install production source
+        shell: bash
+        run: |
+          set -euo pipefail
+          rsync -a --delete \
+            --exclude '.git/' \
+            --exclude 'bootstrap/' \
+            --exclude '.github/workflows/bootstrap-v04.yml' \
+            /tmp/atlas-source/ ./
+
+      - name: Commit installed source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Production source is already installed."
+            exit 0
+          fi
+          git commit -m "feat: merge production architecture and Common Thread"
+          git push
