@@ -8,7 +8,8 @@
 
 This repository contains the real Next.js application, the typed claim and source registries, the editorial operating system, the Supabase schema, CI workflows, and the stable standalone field edition used as a rollback fallback.
 
-Public experience: https://atlas-of-the-sacred.vercel.app
+V1 release candidate: https://atlas-of-the-sacred-v1-rc.vercel.app  
+Legacy public edition: https://atlas-of-the-sacred.vercel.app
 
 V1.0 release plan: [`docs/V1_RELEASE_PLAN.md`](docs/V1_RELEASE_PLAN.md)  
 Master tracker: https://github.com/mikelninh/atlas-of-the-sacred/issues/8
