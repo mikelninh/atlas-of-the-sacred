@@ -12,6 +12,8 @@ V1.0 is not the complete atlas of civilisation. It is the first complete proof t
 
 ## The V1.0 experience
 
+The launch experience contains four connected layers:
+
 1. **The Living Centre** — enter through Remember, Cooperate, Heal or Awaken.
 2. **The Common Thread** — a 10–15 minute guided journey through seven human movements.
 3. **Giza** — the first deep portal combining engineering, landscape, cosmology, evidence and open mystery.
@@ -71,13 +73,15 @@ Master release issue: [V1.0 — The first complete public Atlas release](https:/
 
 ## Definition of done
 
+V1.0 is ready only when:
+
 - GitHub and Vercel contain and deploy the same product version;
 - the four launch routes work on mobile and desktop;
 - 100% of published factual claims expose sources, review dates and limits;
 - no critical accessibility, security or factual-integrity failures remain;
 - beta thresholds are met or a waiver is documented publicly;
 - rollback is tested;
-- the first post-launch update is prepared.
+- the first post-launch update is already prepared.
 
 ## Product success thresholds
 
