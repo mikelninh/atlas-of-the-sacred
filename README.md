@@ -6,7 +6,7 @@
 
 ## Explore the public field edition
 
-### https://mikelninh.github.io/atlas-of-the-sacred/
+### [Enter Atlas of the Sacred](https://atlas-of-the-sacred.vercel.app)
 
 The current experience includes:
 
@@ -34,7 +34,9 @@ The long-term product combines:
 
 ## Repository status
 
-The public field edition is deployed from [`site/index.html`](site/index.html) through GitHub Pages. The larger Next.js production foundation—with reusable site, claim, source, journey and editorial components—is preserved separately while its reviewed modules are progressively brought into this repository.
+The public field edition lives in [`site/index.html`](site/index.html). It is deployed to Vercel and also includes a GitHub Pages workflow for a future mirror at `mikelninh.github.io/atlas-of-the-sacred/` once Pages is enabled in the repository settings.
+
+The larger Next.js production foundation—with reusable site, claim, source, journey and editorial components—is preserved separately while its reviewed modules are progressively brought into this repository.
 
 ## Editorial principle
 
