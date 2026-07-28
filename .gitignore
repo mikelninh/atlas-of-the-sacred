@@ -4,5 +4,6 @@ out
 .env*
 !.env.example
 .DS_Store
-artifacts/
+artifacts/source-health.json
+artifacts/editorial-report.md
 tsconfig.tsbuildinfo

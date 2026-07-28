@@ -1,0 +1,65 @@
+.thread-ribbon-card::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(3,9,8,.08),rgba(3,9,8,.92)); transition:.35s ease; }
+.thread-ribbon-card:hover::after { background:linear-gradient(180deg,rgba(3,9,8,.02),rgba(3,9,8,.8)); }
+.thread-ribbon-card > span,.thread-ribbon-card > div { position:relative; z-index:1; }
+.thread-ribbon-card > span { align-self:flex-end; color:rgba(240,213,154,.7); font: 24px var(--display); }
+.thread-ribbon-card small { display:block; color:var(--gold); text-transform:uppercase; letter-spacing:.16em; font-size:8px; }
+.thread-ribbon-card strong { display:block; margin:8px 0; font:500 29px/1 var(--display); }
+.thread-ribbon-card em { color:#c9c0ad; font:italic 15px var(--display); }
+.site-constellation { padding: 120px clamp(20px,7vw,110px); background:#091310; }
+.site-constellation-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.site-constellation-grid > a { position:relative; min-height:460px; padding:28px; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; border:1px solid var(--line); }
+.site-constellation-grid > a:nth-child(1),.site-constellation-grid > a:nth-child(5) { grid-column:span 2; }
+.site-constellation-grid img { object-fit:cover; transition:transform .8s ease; }
+.site-constellation-grid > a:hover img { transform:scale(1.045); }
+.site-constellation-grid > a > div { position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,transparent 25%,rgba(3,9,8,.94)); }
+.site-constellation-grid span,.site-constellation-grid small,.site-constellation-grid h3,.site-constellation-grid p { position:relative; z-index:2; }
+.site-constellation-grid span { position:absolute; top:22px; right:24px; color:var(--gold-pale); font:24px var(--display); }
+.site-constellation-grid small { color:var(--gold); text-transform:uppercase; letter-spacing:.14em; }
+.site-constellation-grid h3 { margin:8px 0 2px; font:500 48px/1 var(--display); }
+.site-constellation-grid p { margin:0; color:#c9c0ac; font:italic 17px var(--display); }
+.field-note { min-height:75vh; display:grid; grid-template-columns:1.2fr .8fr; gap:80px; align-items:center; padding:120px clamp(20px,7vw,110px); background:radial-gradient(circle at 85% 20%,rgba(217,183,109,.12),transparent 30%),#0a1513; }
+.field-note h2 { margin:8px 0 35px; font:500 clamp(48px,7vw,92px)/.92 var(--display); }
+.field-note-copy > blockquote { margin:0 0 24px; color:var(--gold-pale); font:italic clamp(28px,4vw,48px)/1.1 var(--display); }
+.field-note-copy > p:not(.eyebrow) { max-width:730px; color:#b7ad99; font-size:18px; }
+.field-note-question { padding:38px; border:1px solid var(--line); background:rgba(5,14,12,.72); }
+.field-note-question span { color:var(--gold); font-size:9px; text-transform:uppercase; letter-spacing:.15em; }
+.field-note-question p { color:var(--paper); font:36px/1.15 var(--display); }
+.registry-grid-single { grid-template-columns:minmax(0,900px); }
+
+.journey-hero { min-height:92svh; display:flex; flex-direction:column; justify-content:flex-end; padding:170px 7vw 11vh; background:radial-gradient(circle at 78% 22%,rgba(216,182,109,.18),transparent 27%),radial-gradient(circle at 12% 80%,rgba(101,185,173,.1),transparent 34%),#081210; }
+.journey-hero h1 { max-width:1200px; margin:18px 0 30px; font:500 clamp(82px,14vw,210px)/.72 var(--display); letter-spacing:-.055em; }
+.journey-hero > p:not(.eyebrow) { max-width:780px; color:#c3baa6; font-size:clamp(17px,2vw,22px); }
+.journey-experience { position:relative; background:#050d0b; }
+.journey-progress { position:sticky; top:72px; z-index:45; height:3px; background:rgba(255,255,255,.07); }
+.journey-progress span { display:block; height:100%; background:linear-gradient(90deg,var(--gold),var(--teal)); transition:width .55s cubic-bezier(.2,.8,.2,1); }
+.journey-rail { position:absolute; z-index:20; left:clamp(12px,2vw,32px); top:50px; bottom:50px; display:flex; flex-direction:column; justify-content:center; gap:14px; }
+.journey-rail button { display:flex; align-items:center; gap:9px; border:0; background:none; color:#6f695d; cursor:pointer; }
+.journey-rail button span { width:20px; font-size:8px; }
+.journey-rail button i { width:6px; height:6px; border-radius:50%; background:#5d5a51; transition:.25s ease; }
+.journey-rail button.active { color:var(--gold-pale); }.journey-rail button.active i { transform:scale(1.8); background:var(--gold); box-shadow:0 0 18px rgba(217,183,109,.8); }
+.journey-stage { min-height:calc(100svh - 75px); display:grid; grid-template-columns:minmax(0,1.15fr) minmax(440px,.85fr); }
+.journey-image { position:relative; min-height:calc(100svh - 75px); background-size:cover; background-position:center; }
+.journey-image-shade { position:absolute; inset:0; background:linear-gradient(90deg,rgba(4,11,9,.08),rgba(4,11,9,.12) 60%,rgba(4,11,9,.75)),linear-gradient(0deg,rgba(4,11,9,.74),transparent 48%); }
+.journey-location { position:absolute; z-index:2; left:clamp(55px,7vw,110px); top:10vh; }
+.journey-location span { display:block; font:500 clamp(52px,7vw,102px)/.8 var(--display); letter-spacing:-.045em; text-shadow:0 5px 28px rgba(0,0,0,.45); }
+.journey-location small { display:block; margin-top:18px; color:var(--gold-pale); text-transform:uppercase; letter-spacing:.16em; }
+.journey-image-label { position:absolute; z-index:2; left:clamp(55px,7vw,110px); bottom:26px; color:#c0b7a4; font-size:8px; text-transform:uppercase; letter-spacing:.15em; }
+.journey-voice { position:absolute; z-index:2; left:clamp(55px,7vw,110px); right:35px; bottom:11vh; color:#f0dfb9; font:italic clamp(28px,4vw,58px)/1 var(--display); text-shadow:0 5px 28px rgba(0,0,0,.6); }
+.journey-copy { position:relative; min-height:calc(100svh - 75px); padding:9vh clamp(34px,5vw,78px) 6vh; overflow:auto; background:radial-gradient(circle at 90% 8%,rgba(217,183,109,.09),transparent 25%),#0a1513; border-left:1px solid var(--line); }
+.journey-copy-top { display:flex; justify-content:space-between; align-items:center; }
+.journey-copy-top > span { color:#716a5e; font:18px var(--display); }
+.journey-copy h2 { margin:22px 0 30px; font:500 clamp(54px,6.5vw,105px)/.82 var(--display); letter-spacing:-.045em; }
+.journey-insight { color:#c8bea9; font-size:clamp(17px,1.5vw,21px); }
+.journey-fact { margin-top:40px; padding:24px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.journey-fact > div { display:flex; align-items:center; gap:13px; }
+.journey-fact > div > span:last-child { color:#918876; font-size:9px; text-transform:uppercase; letter-spacing:.14em; }
+.journey-fact > p { margin:18px 0 0; color:#b7ad99; font-size:14px; }
+.evidence-toggle { width:100%; display:flex; justify-content:space-between; margin:20px 0 0; padding:15px 0; border:0; border-bottom:1px solid var(--line); color:var(--gold-pale); background:none; cursor:pointer; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.12em; }
+.evidence-toggle span { font-size:20px; line-height:.6; }
+.journey-evidence { display:grid; gap:12px; margin-top:16px; max-height:46vh; overflow:auto; padding-right:5px; }
+.journey-copy > blockquote { margin:36px 0; color:var(--gold-pale); font:italic clamp(25px,3vw,40px)/1.12 var(--display); }
+.journey-controls { display:grid; grid-template-columns:1fr auto 1fr; gap:12px; align-items:center; }
+.journey-controls button,.journey-controls a { padding:12px 5px; border:0; background:none; color:#a89f8d; cursor:pointer; font-size:10px; text-transform:uppercase; letter-spacing:.11em; }
+.journey-controls button:first-child { text-align:left; }.journey-controls button:last-child,.journey-controls > a:last-child { text-align:right; color:var(--gold-pale); }.journey-controls a:nth-child(2) { border:1px solid var(--line); border-radius:999px; padding:10px 14px; }
+.journey-controls button:disabled { opacity:.25; cursor:not-allowed; }
+.journey-return { min-height:100svh; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:120px clamp(28px,12vw,190px); background:radial-gradient(circle at 70% 35%,rgba(101,185,173,.12),transparent 30%),radial-gradient(circle at 20% 85%,rgba(217,183,109,.13),transparent 30%),#07110f; border-top:1px solid var(--line); }

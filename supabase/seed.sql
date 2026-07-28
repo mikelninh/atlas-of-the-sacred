@@ -1,0 +1,3 @@
+-- The TypeScript content registry remains the temporary authoring source.
+-- Seed generation will be automated after a Supabase project is linked.
+-- Do not hand-copy claims here: use the future registry export script so IDs remain stable.
