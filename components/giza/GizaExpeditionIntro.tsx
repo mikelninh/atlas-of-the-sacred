@@ -20,7 +20,7 @@ export function GizaExpeditionIntro() {
     <section className="giza-expedition" id="expedition">
       <div className="giza-expedition-copy">
         <div>
-          <p className="eyebrow">Giza V2 · flagship expedition</p>
+          <p className="eyebrow">Giza V2.1 · flagship expedition</p>
           <h2>A mountain built from systems.</h2>
           <p>
             The pyramid is the visible summit. Beneath it sits a network of stone, water, food, labour,
@@ -45,6 +45,20 @@ export function GizaExpeditionIntro() {
             </article>
           );
         })}
+      </div>
+
+      <div className="giza-scale-tableau" aria-label="Relative scale view of the Great Pyramid and detected spaces">
+        <div className="giza-scale-tableau-copy">
+          <span>Read the monument vertically</span>
+          <strong>The detected spaces are large. The monument around them is larger still.</strong>
+          <p>Relative visual using the published dimensions above. The human figure is illustrative.</p>
+        </div>
+        <div className="giza-scale-tableau-visual" aria-hidden="true">
+          <div className="scale-pyramid"><span>146.5 m</span></div>
+          <div className="scale-big-void"><span>≥30 m</span></div>
+          <div className="scale-corridor"><span>≈9 m</span></div>
+          <div className="scale-human"><i /><span>you</span></div>
+        </div>
       </div>
 
       <nav className="giza-expedition-rail" aria-label="Giza expedition chapters">
