@@ -26,10 +26,13 @@ export function EditorialDashboard() {
       return rank[a.readiness] - rank[b.readiness];
     });
 
+  const internalReviews = reviews.filter((review) => review.reviewKind === "internal-editorial");
+  const externalReviews = reviews.filter((review) => review.reviewKind === "external-specialist");
   const stats = {
     claims: claimList.length,
     sources: sourceList.length,
-    reviewed: new Set(reviews.map((review) => review.claimId)).size,
+    internallyReviewed: new Set(internalReviews.map((review) => review.claimId)).size,
+    externallyReviewed: new Set(externalReviews.map((review) => review.claimId)).size,
     due: claimList.filter(isReviewDue).length,
     revisions: revisions.length
   };
@@ -39,15 +42,22 @@ export function EditorialDashboard() {
       <section className="editorial-metrics" aria-label="Editorial metrics">
         <article><strong>{stats.claims}</strong><span>Traceable claims</span></article>
         <article><strong>{stats.sources}</strong><span>Registered sources</span></article>
-        <article><strong>{stats.reviewed}</strong><span>Independently reviewed</span></article>
+        <article><strong>{stats.internallyReviewed}</strong><span>Internal editorial checks</span></article>
+        <article><strong>{stats.externallyReviewed}</strong><span>External specialist reviews</span></article>
         <article><strong>{stats.due}</strong><span>Review due</span></article>
         <article><strong>{stats.revisions}</strong><span>Recorded revisions</span></article>
+      </section>
+
+      <section className="editorial-panel editorial-review-disclosure">
+        <p className="eyebrow">Review disclosure</p>
+        <h2>Internal review is not independent endorsement.</h2>
+        <p>The four current checks were conducted by the Atlas project team to test provenance and evidence boundaries. No outside specialist has endorsed the Atlas yet. External reviews will be identified separately, with discipline and conflict statements.</p>
       </section>
 
       <section className="editorial-panel">
         <div className="editorial-panel-heading">
           <div><p className="eyebrow">Publication gate</p><h2>Claim review queue</h2></div>
-          <p>A claim is publishable only when it has sources, explicit limits, a current review and no unresolved changes request.</p>
+          <p>A claim is publishable only when it has sources, explicit limits, a current editorial review and no unresolved changes request. Independent specialist review is an additional trust layer, not something we currently pretend to have.</p>
         </div>
         <div className="editorial-table-wrap">
           <table className="editorial-table">
@@ -58,7 +68,7 @@ export function EditorialDashboard() {
                   <td><a href={`/sites/giza/#${claim.id}`}>{claim.title}</a><small>{claim.id} · v{claim.version}</small></td>
                   <td><span className={`evidence-dot evidence-${claim.status}`}/>{claim.status.replace("-", " ")}</td>
                   <td>{claim.editorialState}</td>
-                  <td>{latestReview ? <>{latestReview.decision}<small>{latestReview.reviewedOn}</small></> : "—"}</td>
+                  <td>{latestReview ? <>{latestReview.decision}<small>{latestReview.reviewKind.replace("-", " ")} · {latestReview.reviewedOn}</small></> : "—"}</td>
                   <td><span className={`readiness readiness-${readiness}`}>{readinessLabel[readiness]}</span></td>
                 </tr>
               ))}
