@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { getClaim } from "@/lib/content";
 import { EvidenceBadge } from "@/components/claim/EvidenceBadge";
+import { ClaimDrawer } from "@/components/giza/ClaimDrawer";
 
 const stops = [
   { id: "entrance", label: "North entrance", x: 32, y: 34, claimId: "giza-known-interior", layer: "known", feeling: "A threshold cut into the monument’s north face.", metric: "known passage system" },
@@ -72,7 +73,13 @@ export function InteriorJourney() {
         <EvidenceBadge status={claim.status} />
         <p>{claim.statement}</p>
         <div className="limit-box"><span>Keep the mystery honest</span>{claim.doesNotProve}</div>
-        {active.layer === "detected" && <div className="open-mystery-note"><EvidenceBadge status={mystery.status} /><p>{mystery.statement}</p></div>}
+        <ClaimDrawer claimId={claim.id} label="Open evidence for this space" />
+        {active.layer === "detected" && (
+          <>
+            <div className="open-mystery-note"><EvidenceBadge status={mystery.status} /><p>{mystery.statement}</p></div>
+            <ClaimDrawer claimId={mystery.id} label="Inspect the unresolved function" />
+          </>
+        )}
         <div className="module-step-actions">
           <button onClick={() => move(-1)}>← Previous</button>
           <button onClick={() => move(1)}>Next space →</button>
