@@ -1,6 +1,6 @@
 {
   "name": "atlas-of-the-sacred",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-rc.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -12,6 +12,8 @@
     "check:sources": "node scripts/check-source-health.mjs",
     "check:sources:strict": "node scripts/check-source-health.mjs --strict",
     "report:editorial": "node scripts/editorial-report.mjs",
+    "smoke:static": "node scripts/smoke-static-export.mjs",
+    "smoke:routes": "node scripts/smoke-routes.mjs",
     "quality": "npm run validate:content && npm run report:editorial && npm run typecheck && npm run lint"
   },
   "dependencies": {
