@@ -6,6 +6,7 @@ const root = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), ".."
 const claimsText = fs.readFileSync(path.join(root, "content/claims.ts"), "utf8");
 const sourcesText = fs.readFileSync(path.join(root, "content/sources.ts"), "utf8");
 const reviewsText = fs.readFileSync(path.join(root, "content/reviews.ts"), "utf8");
+const dispatchesText = fs.readFileSync(path.join(root, "content/dispatches.ts"), "utf8");
 
 function walk(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -22,11 +23,16 @@ const projectText = walk(root)
 
 const claimIds = [...claimsText.matchAll(/^  "([^"]+)": \{/gm)].map((m) => m[1]);
 const sourceIds = [...sourcesText.matchAll(/^  "([^"]+)": \{/gm)].map((m) => m[1]);
+const dispatchIds = [...dispatchesText.matchAll(/^  "([^"]+)": \{/gm)].map((m) => m[1]);
 const referencedSources = [...claimsText.matchAll(/sourceIds: \[([^\]]+)\]/g)]
   .flatMap((m) => [...m[1].matchAll(/"([^"]+)"/g)].map((x) => x[1]));
 const referencedClaims = [...projectText.matchAll(/"([a-z0-9-]+)"/g)]
   .map((m) => m[1])
   .filter((id) => claimIds.includes(id));
+const dispatchClaimRefs = [...dispatchesText.matchAll(/claimIds: \[([^\]]+)\]/g)]
+  .flatMap((m) => [...m[1].matchAll(/"([^"]+)"/g)].map((x) => x[1]));
+const dispatchSourceRefs = [...dispatchesText.matchAll(/sourceIds: \[([^\]]+)\]/g)]
+  .flatMap((m) => [...m[1].matchAll(/"([^"]+)"/g)].map((x) => x[1]));
 
 const errors = [];
 for (const id of sourceIds) {
@@ -61,8 +67,20 @@ for (const id of claimIds) {
   }
 }
 
+for (const id of dispatchClaimRefs) if (!claimIds.includes(id)) errors.push(`Dispatch references unknown claim: ${id}`);
+for (const id of dispatchSourceRefs) if (!sourceIds.includes(id)) errors.push(`Dispatch references unknown source: ${id}`);
+for (const id of dispatchIds) {
+  const start = dispatchesText.indexOf(`  "${id}": {`);
+  const next = dispatchesText.indexOf("\n  \"", start + 5);
+  const block = dispatchesText.slice(start, next === -1 ? undefined : next);
+  for (const field of ["slug:", "sourceYear:", "atlasPublishedOn:", "evidenceStatus:", "editorialState:", "claimIds:", "sourceIds:", "whatChanged:", "whyItMatters:", "evidenceSupports:", "headlinesOverreach:", "openQuestion:"]) {
+    if (!block.includes(field)) errors.push(`${id} dispatch is missing ${field}`);
+  }
+  if (!block.includes('editorialState: "published"')) errors.push(`${id} dispatch is not in a publishable state`);
+}
+
 if (errors.length) {
   console.error("Content validation failed:\n" + [...new Set(errors)].map((e) => `- ${e}`).join("\n"));
   process.exit(1);
 }
-console.log(`Validated ${claimIds.length} claims, ${sourceIds.length} sources, and ${new Set(referencedClaims).size} unique claim references across the project.`);
+console.log(`Validated ${claimIds.length} claims, ${sourceIds.length} sources, ${dispatchIds.length} dispatches, and ${new Set(referencedClaims).size} unique claim references across the project.`);
