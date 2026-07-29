@@ -33,6 +33,7 @@ const dispatchClaimRefs = [...dispatchesText.matchAll(/claimIds: \[([^\]]+)\]/g)
   .flatMap((m) => [...m[1].matchAll(/"([^"]+)"/g)].map((x) => x[1]));
 const dispatchSourceRefs = [...dispatchesText.matchAll(/sourceIds: \[([^\]]+)\]/g)]
   .flatMap((m) => [...m[1].matchAll(/"([^"]+)"/g)].map((x) => x[1]));
+const reviewBlocks = [...reviewsText.matchAll(/\{\n\s+id: "review-[\s\S]*?\n\s+\}/g)].map((match) => match[0]);
 
 const errors = [];
 for (const id of sourceIds) {
@@ -58,6 +59,15 @@ for (const id of claimIds) {
 
 const reviewedClaimIds = [...reviewsText.matchAll(/claimId: "([^"]+)"/g)].map((m) => m[1]);
 for (const id of reviewedClaimIds) if (!claimIds.includes(id)) errors.push(`Review references unknown claim: ${id}`);
+for (const block of reviewBlocks) {
+  const reviewId = block.match(/id: "([^"]+)"/)?.[1] ?? "unknown-review";
+  for (const field of ["reviewKind:", "reviewerDiscipline:", "conflictStatement:", "decision:", "evidenceAssessment:", "notes:", "requestedChanges:"]) {
+    if (!block.includes(field)) errors.push(`${reviewId} is missing ${field}`);
+  }
+  if (block.includes('reviewKind: "external-specialist"') && block.includes("Atlas internal editorial review")) {
+    errors.push(`${reviewId} labels an internal check as external specialist review`);
+  }
+}
 for (const id of claimIds) {
   const start = claimsText.indexOf(`  "${id}": {`);
   const next = claimsText.indexOf("\n  \"", start + 5);
@@ -83,4 +93,4 @@ if (errors.length) {
   console.error("Content validation failed:\n" + [...new Set(errors)].map((e) => `- ${e}`).join("\n"));
   process.exit(1);
 }
-console.log(`Validated ${claimIds.length} claims, ${sourceIds.length} sources, ${dispatchIds.length} dispatches, and ${new Set(referencedClaims).size} unique claim references across the project.`);
+console.log(`Validated ${claimIds.length} claims, ${sourceIds.length} sources, ${reviewBlocks.length} reviews, ${dispatchIds.length} dispatches, and ${new Set(referencedClaims).size} unique claim references across the project.`);
