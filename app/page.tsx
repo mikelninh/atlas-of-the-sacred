@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getClaim } from "@/lib/content";
 import { EvidenceBadge } from "@/components/claim/EvidenceBadge";
 import { PurposeCompass } from "@/components/purpose/PurposeCompass";
+import { HomeDispatchPreview } from "@/components/dispatch/HomeDispatchPreview";
 import { sites } from "@/content/sites";
 import { commonThreadJourney } from "@/content/journeys/common-thread";
 
@@ -119,6 +120,8 @@ export default function HomePage() {
           <article className="home-journey"><p className="eyebrow">Enter the monument</p><h3>Discover why it is extraordinary.</h3><p>Move through construction, river landscape, ritual geography, cardinal alignment and the known interior.</p><Link href="/sites/giza/">Enter Giza →</Link></article>
         </div>
       </section>
+
+      <HomeDispatchPreview />
 
       <section className="site-constellation">
         <div className="chapter-heading"><p className="eyebrow">A constellation, not a single doctrine</p><h2>Seven places. Seven distinct voices.</h2><p>Each place holds its own history while joining a wider human conversation about what deserves our finest attention, labour and imagination.</p></div>
