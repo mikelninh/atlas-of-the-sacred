@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { EditorialDashboard } from "@/components/editorial/EditorialDashboard";
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export default function EditorialPage() {
         <p className="eyebrow">Behind the wonder</p>
         <h1>The editorial operating system</h1>
         <p>Trust is designed. Every claim moves through provenance, review, publication, correction and renewal.</p>
+        <Link className="button button-primary" href="/review/">Enter the Founding Review Circle</Link>
       </header>
       <EditorialDashboard />
     </>
