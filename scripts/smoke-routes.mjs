@@ -23,6 +23,7 @@ for (const [route, fingerprints] of routes) {
     if (!html.includes(fingerprint)) failures.push(`${route} is missing identifying text: ${fingerprint}`);
   }
   if (!html.includes("<html") || !html.includes("<title>")) failures.push(`${route} did not return a complete HTML document`);
+  if (!html.includes(`rel="canonical" href="${baseUrl}${route}"`)) failures.push(`${route} canonical URL does not match the deployed origin`);
 
   const assetUrls = [...html.matchAll(/(?:src|href)="([^"]+\.(?:css|js))"/g)]
     .map((match) => new URL(match[1], response.url).toString())
@@ -39,4 +40,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`Verified ${routes.length} canonical routes at ${baseUrl}.`);
+console.log(`Verified ${routes.length} canonical routes and their metadata at ${baseUrl}.`);

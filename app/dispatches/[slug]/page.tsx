@@ -11,7 +11,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const dispatch = getDispatch(slug);
-  return dispatch ? { title: dispatch.title, description: dispatch.dek } : {};
+  return dispatch ? {
+    title: dispatch.title,
+    description: dispatch.dek,
+    alternates: { canonical: `/dispatches/${dispatch.slug}/` },
+    openGraph: { title: dispatch.title, description: dispatch.dek, url: `/dispatches/${dispatch.slug}/` }
+  } : {};
 }
 
 export default async function DispatchPage({ params }: { params: Promise<{ slug: string }> }) {

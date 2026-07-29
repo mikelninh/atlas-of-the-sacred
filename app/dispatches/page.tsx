@@ -5,6 +5,12 @@ import { getPublishedDispatches } from "@/lib/dispatches";
 export const metadata: Metadata = {
   title: "Dispatches from Deep Time",
   description: "Evidence-led updates on discoveries that change, strengthen or complicate the Atlas of the Sacred.",
+  alternates: { canonical: "/dispatches/" },
+  openGraph: {
+    title: "Dispatches from Deep Time",
+    description: "Evidence-led updates on discoveries that change, strengthen or complicate the Atlas of the Sacred.",
+    url: "/dispatches/"
+  }
 };
 
 export default function DispatchesPage() {

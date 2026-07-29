@@ -12,6 +12,10 @@ const routes = [
   ["/editorial/", ["The editorial operating system", "Traceable claims"]]
 ];
 
+function escapeRegex(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 const errors = [];
 for (const [route, fingerprints] of routes) {
   const file = route === "/" ? path.join(root, "index.html") : path.join(root, route, "index.html");
@@ -24,6 +28,8 @@ for (const [route, fingerprints] of routes) {
     if (!html.includes(fingerprint)) errors.push(`${route} is missing identifying text: ${fingerprint}`);
   }
   if (!html.includes("<html") || !html.includes("<title>")) errors.push(`${route} did not generate a complete HTML document`);
+  const canonicalPattern = new RegExp(`rel="canonical" href="[^"]*${escapeRegex(route)}"`);
+  if (!canonicalPattern.test(html)) errors.push(`${route} does not declare itself as the canonical route`);
 }
 
 if (errors.length) {
@@ -31,4 +37,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Verified ${routes.length} canonical routes in the static export.`);
+console.log(`Verified ${routes.length} canonical routes and their metadata in the static export.`);
