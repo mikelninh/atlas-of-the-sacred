@@ -1,6 +1,6 @@
 import type { ReviewRecord } from "@/types/editorial";
 
-export const reviews = [
+export const reviews: ReviewRecord[] = [
   {
     id: "review-giza-khufu-tomb-1",
     claimId: "giza-khufu-tomb",
@@ -53,4 +53,4 @@ export const reviews = [
     notes: "The negative claim is carefully bounded. Future versions should map competing construction models individually.",
     requestedChanges: ["Create separate claim objects for major ramp and levering models."]
   }
-] satisfies ReviewRecord[];
+];
