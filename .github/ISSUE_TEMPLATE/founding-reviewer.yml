@@ -1,0 +1,76 @@
+name: Founding reviewer interest
+description: Express interest in reviewing a bounded Atlas claim or experience packet.
+title: "Reviewer interest: "
+labels:
+  - expert-review
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for considering a critical review of Atlas of the Sacred. This form does not imply selection, endorsement or public attribution. Scope, conflicts, timing, attribution and compensation—where applicable—will be agreed before substantive review begins.
+  - type: dropdown
+    id: discipline
+    attributes:
+      label: Review discipline
+      description: Choose the area closest to your expertise.
+      options:
+        - Egyptology and Giza archaeology
+        - Construction, structural engineering or architectural history
+        - Religion, ritual or comparative interpretation
+        - Egyptian heritage, museums or public education
+        - Accessibility or digital public history
+        - Other relevant expertise
+    validations:
+      required: true
+  - type: textarea
+    id: expertise
+    attributes:
+      label: Relevant expertise
+      description: Briefly describe your research, practice, teaching, fieldwork or public-history experience.
+      placeholder: Roles, publications, projects or links that establish relevant expertise.
+    validations:
+      required: true
+  - type: textarea
+    id: packet
+    attributes:
+      label: Preferred review packet
+      description: Name the claims, module or framing question you are most qualified to review.
+      placeholder: For example, Giza cardinal alignment; construction systems language; Common Thread cultural boundaries.
+    validations:
+      required: true
+  - type: textarea
+    id: conflicts
+    attributes:
+      label: Relevant conflicts or involvement
+      description: Disclose relevant authorship, employment, funding, excavation involvement, advocacy or personal relationships. A disclosure does not automatically prevent participation.
+      placeholder: State none, or describe the relevant relationship.
+    validations:
+      required: true
+  - type: dropdown
+    id: attribution
+    attributes:
+      label: Attribution preference
+      options:
+        - Public name and affiliation may be discussed
+        - Public name without affiliation may be discussed
+        - Anonymous review preferred
+        - Decide after reviewing the packet
+    validations:
+      required: true
+  - type: textarea
+    id: challenge
+    attributes:
+      label: First concern or challenge
+      description: A useful review often begins with disagreement. Name one claim, framing choice or risk that already deserves scrutiny.
+      placeholder: What should the Atlas be especially careful not to overstate or flatten?
+    validations:
+      required: true
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Understanding
+      options:
+        - label: I understand that submitting this form does not create an advisory role, endorsement or public attribution.
+          required: true
+        - label: I understand that any substantive review scope and terms will be agreed separately.
+          required: true
