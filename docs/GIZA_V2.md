@@ -22,7 +22,7 @@ Create the most compelling evidence-led public journey through the Great Pyramid
 - Never turn absence of evidence into evidence for a dramatic explanation.
 - Keep sources and explicit limits one action away from each load-bearing statement.
 
-## V2 scope
+## V2 foundation
 
 - expedition overview and progress rail;
 - richer construction systems lab;
@@ -32,10 +32,33 @@ Create the most compelling evidence-led public journey through the Great Pyramid
 - expanded interior navigator with known/detected/unresolved layers;
 - final reflection and shareable thesis.
 
+## V2.1 experience contract
+
+- one persistent expedition compass tracks the active chapter and overall progress;
+- chapter bridges preserve the intellectual and emotional thread between modules;
+- every active module claim exposes its sources, review date, interpretation and limits inline;
+- the scale tableau compares the 146.5 m monument, ≥30 m Big Void and ≈9 m North Face Corridor without inventing new measurements;
+- the return section can share the thesis or save a self-contained SVG card;
+- all interactive controls have visible keyboard focus and practical touch targets;
+- reduced-motion preferences remove non-essential transitions and smooth scrolling.
+
+## Review gate
+
+Before Gate 3 closes, verify:
+
+- keyboard navigation through every control, drawer and chapter link;
+- touch behavior at narrow mobile widths;
+- reduced-motion behavior;
+- first-time visitor comprehension of the distinction between established evidence and unresolved method;
+- Egyptological or archaeological review;
+- engineering review of the construction-system language;
+- transparent logging of accepted, rejected and unresolved reviewer feedback.
+
 ## Not in this sprint
 
 - photorealistic 3D;
 - numerical workforce or construction-time claims not represented in the registry;
 - definitive ramp reconstruction;
 - speculative chamber contents;
+- autoplay or compulsory atmospheric sound;
 - new deep-site portals.
