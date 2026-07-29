@@ -1,8 +1,6 @@
 name: Founding reviewer interest
 description: Express interest in reviewing a bounded Atlas claim or experience packet.
 title: "Reviewer interest: "
-labels:
-  - expert-review
 body:
   - type: markdown
     attributes:
