@@ -14,10 +14,17 @@ export type ReviewDecision =
   | "changes-requested"
   | "rejected";
 
+export type ReviewKind =
+  | "internal-editorial"
+  | "external-specialist";
+
 export interface ReviewRecord {
   id: string;
   claimId: string;
   reviewer: string;
+  reviewKind: ReviewKind;
+  reviewerDiscipline?: string;
+  conflictStatement?: string;
   reviewedOn: string;
   decision: ReviewDecision;
   evidenceAssessment: EvidenceStatus;
