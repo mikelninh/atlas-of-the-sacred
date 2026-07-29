@@ -10,6 +10,8 @@ import { RoyalComplexMap } from "@/components/giza/RoyalComplexMap";
 import { CardinalAlignment } from "@/components/giza/CardinalAlignment";
 import { InteriorJourney } from "@/components/giza/InteriorJourney";
 import { GizaExpeditionIntro } from "@/components/giza/GizaExpeditionIntro";
+import { GizaJourneyProgress } from "@/components/giza/GizaJourneyProgress";
+import { GizaChapterBridge } from "@/components/giza/GizaChapterBridge";
 import { GizaReturn } from "@/components/giza/GizaReturn";
 import { ClaimCard } from "@/components/claim/ClaimCard";
 
@@ -37,6 +39,37 @@ const moduleDescriptions: Record<string, string> = {
   "royal-complex": "Walk from the riverward edge toward the pyramid and see the monument as one part of a connected ritual landscape.",
   alignment: "Feel the difference between the measured result and the debated method used to achieve it.",
   interior: "Move through known passages and scientifically detected spaces while keeping discovery separate from explanation.",
+};
+
+const chapterBridges: Record<string, { number: string; prompt: string; nextId?: string; nextLabel?: string }> = {
+  construction: {
+    number: "01",
+    prompt: "The monument begins to look less like one impossible trick and more like a civilisation coordinating many ordinary systems extraordinarily well.",
+    nextId: "nile-landscape",
+    nextLabel: "the river world",
+  },
+  "nile-landscape": {
+    number: "02",
+    prompt: "Once water returns to the picture, the pyramid stops floating alone in desert and becomes part of movement between river, settlement and plateau.",
+    nextId: "royal-complex",
+    nextLabel: "the ceremonial approach",
+  },
+  "royal-complex": {
+    number: "03",
+    prompt: "The pyramid was not only seen. It was approached through a sequence that organised bodies, attention and royal memory across the landscape.",
+    nextId: "alignment",
+    nextLabel: "the cardinal sky",
+  },
+  alignment: {
+    number: "04",
+    prompt: "Precision is established. The exact surveying act is not. The distinction is where honest wonder begins.",
+    nextId: "interior",
+    nextLabel: "the known and detected interior",
+  },
+  interior: {
+    number: "05",
+    prompt: "Discovery enlarges the monument without completing its explanation. We leave with better questions, not manufactured answers.",
+  },
 };
 
 export default async function SitePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -72,11 +105,10 @@ export default async function SitePage({ params }: { params: Promise<{ slug: str
     <>
       <SiteHero site={site} />
       <GizaExpeditionIntro />
-      <nav className="chapter-nav chapter-nav-v2" aria-label="Giza chapters">
-        {site.modules.map((module) => <a href={`#${module.id}`} key={module.id}><span>{module.eyebrow}</span>{module.title}</a>)}
-      </nav>
+      <GizaJourneyProgress />
       {site.modules.map((module) => {
         const Module = modules[module.id as keyof typeof modules];
+        const bridge = chapterBridges[module.id];
         return (
           <section className={`site-chapter giza-v2-chapter chapter-${module.id}`} id={module.id} key={module.id}>
             <div className="chapter-heading chapter-heading-v2">
@@ -85,6 +117,7 @@ export default async function SitePage({ params }: { params: Promise<{ slug: str
               <p>{moduleDescriptions[module.id]}</p>
             </div>
             <Module />
+            <GizaChapterBridge {...bridge} />
           </section>
         );
       })}
