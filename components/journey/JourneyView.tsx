@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { claims } from "@/content/claims";
 import type { Claim, Journey } from "@/types/content";
@@ -9,30 +9,10 @@ import { ClaimCard } from "@/components/claim/ClaimCard";
 import { JourneyGesture } from "@/components/journey/JourneyGesture";
 
 const doorways = [
-  {
-    id: "remember",
-    title: "Remember",
-    question: "What must not disappear?",
-    practice: "Choose one fact, story or place from the journey and preserve it with its source and limits intact.",
-  },
-  {
-    id: "cooperate",
-    title: "Cooperate",
-    question: "What deserves a shared centre?",
-    practice: "Invite one other person into a question that cannot be carried well alone.",
-  },
-  {
-    id: "heal",
-    title: "Heal",
-    question: "What relationship needs repair?",
-    practice: "Notice where your built environment separates life, care and belonging—and make one small reconnection.",
-  },
-  {
-    id: "awaken",
-    title: "Awaken",
-    question: "What have you stopped seeing?",
-    practice: "Return to an ordinary place with ceremonial attention: light, sound, movement, material and the lives around it.",
-  },
+  { id: "remember", title: "Remember", question: "What must not disappear?", practice: "Choose one fact, story or place from the journey and preserve it with its source and limits intact." },
+  { id: "cooperate", title: "Cooperate", question: "What deserves a shared centre?", practice: "Invite one other person into a question that cannot be carried well alone." },
+  { id: "heal", title: "Heal", question: "What relationship needs repair?", practice: "Notice where your built environment separates life, care and belonging—and make one small reconnection." },
+  { id: "awaken", title: "Awaken", question: "What have you stopped seeing?", practice: "Return to an ordinary place with ceremonial attention: light, sound, movement, material and the lives around it." },
 ] as const;
 
 export function JourneyView({ journey }: { journey: Journey }) {
@@ -45,19 +25,21 @@ export function JourneyView({ journey }: { journey: Journey }) {
   const progress = ((activeIndex + 1) / journey.steps.length) * 100;
   const doorway = doorways.find((item) => item.id === doorwayId) ?? doorways[0];
 
-  const move = (next: number) => {
+  const move = useCallback((next: number) => {
     const bounded = Math.max(0, Math.min(journey.steps.length - 1, next));
     setActiveIndex(bounded);
     setEvidenceOpen(false);
     const nextStep = journey.steps[bounded];
     window.history.replaceState(null, "", `#${nextStep.id}`);
     document.getElementById("journey-experience")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  }, [journey.steps]);
 
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
     const initialIndex = journey.steps.findIndex((step) => step.id === hash);
-    if (initialIndex >= 0) setActiveIndex(initialIndex);
+    if (initialIndex < 0) return;
+    const frame = window.requestAnimationFrame(() => setActiveIndex(initialIndex));
+    return () => window.cancelAnimationFrame(frame);
   }, [journey.steps]);
 
   useEffect(() => {
@@ -69,7 +51,7 @@ export function JourneyView({ journey }: { journey: Journey }) {
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [activeIndex]);
+  }, [activeIndex, move]);
 
   const markComplete = () => {
     setCompletedSteps((current) => current.includes(active.id) ? current : [...current, active.id]);
@@ -83,12 +65,7 @@ export function JourneyView({ journey }: { journey: Journey }) {
 
       <nav className="journey-constellation" aria-label="The seven thresholds">
         {journey.steps.map((step, index) => (
-          <button
-            className={index === activeIndex ? "active" : ""}
-            aria-current={index === activeIndex ? "step" : undefined}
-            onClick={() => move(index)}
-            key={step.id}
-          >
+          <button className={index === activeIndex ? "active" : ""} aria-current={index === activeIndex ? "step" : undefined} onClick={() => move(index)} key={step.id}>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <div><strong>{step.title.replace("We ", "")}</strong><small>{step.siteName}</small></div>
             <i className={completedSteps.includes(step.id) ? "complete" : ""} aria-label={completedSteps.includes(step.id) ? "Gesture completed" : "Gesture not completed"} />
@@ -116,11 +93,7 @@ export function JourneyView({ journey }: { journey: Journey }) {
             <p>{activeClaims[0].statement}</p>
           </div>
 
-          <div className="journey-cultural-boundary">
-            <span>Difference before commonality</span>
-            <p>{active.culturalBoundary}</p>
-          </div>
-
+          <div className="journey-cultural-boundary"><span>Difference before commonality</span><p>{active.culturalBoundary}</p></div>
           <JourneyGesture step={active} onComplete={markComplete} />
 
           <button className="evidence-toggle evidence-toggle-v2" onClick={() => setEvidenceOpen((open) => !open)} aria-expanded={evidenceOpen}>
