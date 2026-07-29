@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { getClaim } from "@/lib/content";
 import { EvidenceBadge } from "@/components/claim/EvidenceBadge";
+import { ClaimDrawer } from "@/components/giza/ClaimDrawer";
 
 const systemNodes = [
   { id: "quarry", label: "Plateau quarry", claimId: "giza-scale-materials" },
@@ -70,6 +71,7 @@ export function ConstructionDiagram() {
         <div className="giza-insight"><span>Interpretation</span><p>{claim.interpretation}</p></div>
         <div className="limit-box"><span>What this does not prove</span>{claim.doesNotProve}</div>
         {mode === "method" && <p className="schematic-label">Conceptual route family only. No complete end-to-end raising sequence is established.</p>}
+        <ClaimDrawer claimId={claim.id} label={mode === "system" ? "Open sources and review" : "Inspect the method boundary"} />
       </aside>
     </div>
   );
