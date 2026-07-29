@@ -23,7 +23,12 @@ export const commonThreadJourney: Journey = {
       imageAlt: "Archaeological photograph of Göbekli Tepe's carved T-shaped pillars at dawn",
       imageLabel: "Archaeological photograph",
       claimIds: ["gobekli-monumental-gathering"],
-      reflection: "What brings separate people into a shared world?"
+      reflection: "What brings separate people into a shared world?",
+      gestureKind: "gather",
+      gestureInstruction: "Bring the four markers into relation. The gesture represents coordinated attention, not a reconstruction of an ancient rite.",
+      gestureCompletion: "A shared centre appears only when separate positions begin to relate.",
+      culturalBoundary: "Göbekli Tepe is not evidence that every later religion came from one forgotten doctrine. Its enclosures belong first to their own Neolithic place and communities.",
+      carryForward: "Gathering creates a shared world. The next threshold asks how a community learns to share time."
     },
     {
       id: "we-watch",
@@ -38,7 +43,12 @@ export const commonThreadJourney: Journey = {
       imageAlt: "Archaeological photograph of Stonehenge in mist at sunrise",
       imageLabel: "Archaeological photograph",
       claimIds: ["stonehenge-ceremonial-landscape"],
-      reflection: "Which rhythms still gather and orient your community?"
+      reflection: "Which rhythms still gather and orient your community?",
+      gestureKind: "watch",
+      gestureInstruction: "Move the light across the horizon and pause at return. This is a symbolic observation exercise, not an alignment calculator.",
+      gestureCompletion: "A recurring horizon can turn passing time into a shared expectation.",
+      culturalBoundary: "Stonehenge changed across many generations and sat within a wider ceremonial landscape. It should not be reduced to a single observatory, calendar or timeless Celtic symbol.",
+      carryForward: "Watching return makes time inhabitable. The next threshold brings returning light into an enclosed chamber."
     },
     {
       id: "we-invite-light",
@@ -53,7 +63,12 @@ export const commonThreadJourney: Journey = {
       imageAlt: "The entrance and roof box of Newgrange passage tomb",
       imageLabel: "Archaeological photograph · public domain",
       claimIds: ["newgrange-solstice-light"],
-      reflection: "What helps a human being trust that darkness is not the whole story?"
+      reflection: "What helps a human being trust that darkness is not the whole story?",
+      gestureKind: "invite-light",
+      gestureInstruction: "Guide a narrow beam toward the chamber. The geometry is interpretive; the documented midwinter illumination is the evidence-led centre.",
+      gestureCompletion: "Architecture can make a distant celestial return feel intimate and interior.",
+      culturalBoundary: "Newgrange is an Irish passage tomb with a long, changing history. Its solstice illumination does not prove a universal resurrection doctrine shared by all monument builders.",
+      carryForward: "Light can be invited back. The next threshold asks how a society makes order endure far beyond one human life."
     },
     {
       id: "we-endure",
@@ -68,7 +83,12 @@ export const commonThreadJourney: Journey = {
       imageAlt: "Archaeological photograph of the Giza pyramid complex in golden light",
       imageLabel: "Archaeological photograph",
       claimIds: ["giza-khufu-tomb", "giza-cardinal-alignment", "giza-royal-complex"],
-      reflection: "What deserves to be preserved beyond one lifetime?"
+      reflection: "What deserves to be preserved beyond one lifetime?",
+      gestureKind: "endure",
+      gestureInstruction: "Activate stone, water, labour and orientation. The symbolic system resists the fantasy that one secret technique explains the monument.",
+      gestureCompletion: "Endurance emerges from coordinated material, social, spatial and symbolic systems.",
+      culturalBoundary: "Giza belongs to Old Kingdom Egyptian kingship, burial practice and cosmic order. Its precision is not evidence for aliens, a global pyramid cult or one hidden modern science.",
+      carryForward: "Some monuments rise toward endurance. The next threshold turns downward, toward mortality and the world beneath."
     },
     {
       id: "we-descend",
@@ -83,7 +103,12 @@ export const commonThreadJourney: Journey = {
       imageAlt: "Archaeological photograph of the Ħal Saflieni Hypogeum's carved underground chambers",
       imageLabel: "Archaeological photograph",
       claimIds: ["hal-saflieni-subterranean-cemetery"],
-      reflection: "What can only be encountered when we stop fleeing depth and mortality?"
+      reflection: "What can only be encountered when we stop fleeing depth and mortality?",
+      gestureKind: "descend",
+      gestureInstruction: "Move through three symbolic depths. The exercise evokes changing attention; it does not reproduce the original route or ritual sequence.",
+      gestureCompletion: "Descent changes the scale of attention: from open world, to chamber, to the fact of mortality.",
+      culturalBoundary: "The Hypogeum is a specific Maltese subterranean cemetery and ritual complex. Acoustic or mystical interpretations must not outrun the archaeological record.",
+      carryForward: "Descent gathers the dead and living into one depth. The next threshold expands sacred order into water, city and cultivated land."
     },
     {
       id: "we-shape-a-world",
@@ -98,7 +123,12 @@ export const commonThreadJourney: Journey = {
       imageAlt: "Archaeological photograph of Angkor Wat reflected in water at sunrise",
       imageLabel: "Archaeological photograph",
       claimIds: ["angkor-hydraulic-cosmos"],
-      reflection: "What would it mean for our infrastructure to express care, balance and belonging?"
+      reflection: "What would it mean for our infrastructure to express care, balance and belonging?",
+      gestureKind: "flow",
+      gestureInstruction: "Connect water, settlement, cultivation and temple. The network is a conceptual relationship map, not a hydraulic simulation of Angkor.",
+      gestureCompletion: "A living centre depends on flows between practical infrastructure, political power, ecology and sacred meaning.",
+      culturalBoundary: "Angkor was a changing Khmer urban region, not one frozen temple-city. Its water systems should not be romanticised as perfectly harmonious or explained by cosmology alone.",
+      carryForward: "A sacred world can be distributed through an inhabited landscape. The final threshold makes the teaching itself a path."
     },
     {
       id: "we-walk",
@@ -113,7 +143,12 @@ export const commonThreadJourney: Journey = {
       imageAlt: "Archaeological photograph of Borobudur's stupas above a misty valley",
       imageLabel: "Archaeological photograph",
       claimIds: ["borobudur-walking-cosmology"],
-      reflection: "Which truths can be understood only by practising and moving through them?"
+      reflection: "Which truths can be understood only by practising and moving through them?",
+      gestureKind: "walk",
+      gestureInstruction: "Advance through three symbolic terraces. The sequence evokes embodied learning without claiming to reproduce a historical pilgrim's complete experience.",
+      gestureCompletion: "A teaching becomes different when the body must circle, climb, pause and continue.",
+      culturalBoundary: "Borobudur is a Javanese Buddhist monument with specific narratives, practices and historical contexts. It is not merely a generic mandala or universal self-help metaphor.",
+      carryForward: "The seven sites do not resolve into one doctrine. They return seven different ways of giving form to what a society holds sacred."
     }
   ]
 };
