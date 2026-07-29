@@ -134,6 +134,7 @@ export function JourneyGesture({ step, onComplete }: { step: JourneyStep; onComp
             >{terrace === 2 ? "Horizon reached" : "Walk the next terrace"}</button>
           </div>
         );
+      }
     }
   };
 
