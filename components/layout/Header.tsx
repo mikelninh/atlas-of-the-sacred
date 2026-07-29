@@ -8,6 +8,7 @@ export function Header() {
         <Link href="/#purpose">Purpose</Link>
         <Link href="/journeys/common-thread/">Common Thread</Link>
         <Link href="/sites/giza/">Giza</Link>
+        <Link href="/dispatches/">Dispatches</Link>
         <Link href="/editorial/">Evidence</Link>
       </nav>
     </header>
