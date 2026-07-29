@@ -109,10 +109,108 @@ export const sources = {
     id: "unesco-gobekli",
     title: "Göbekli Tepe",
     publisher: "UNESCO World Heritage Centre",
-    accessedOn: "2026-07-28",
+    accessedOn: "2026-07-29",
     url: "https://whc.unesco.org/en/list/1572/",
     kind: "official-record",
-    note: "Official synthesis of the Pre-Pottery Neolithic monumental enclosures, T-shaped pillars and their communal context."
+    note: "Official synthesis of monumental communal buildings, apparent domestic structures, T-shaped pillars, imagery and regional social networks."
+  },
+  "dai-gobekli-faq": {
+    id: "dai-gobekli-faq",
+    title: "Göbekli Tepe FAQ",
+    publisher: "German Archaeological Institute · Tepe Telegrams",
+    accessedOn: "2026-07-29",
+    url: "https://www.dainst.blog/the-tepe-telegrams/faq/",
+    kind: "official-record",
+    note: "Project answers on special buildings, anthropomorphic pillars, habitation evidence, excavation limits and unresolved purpose."
+  },
+  "dai-gobekli-monoliths": {
+    id: "dai-gobekli-monoliths",
+    title: "How did they do it? Making and moving monoliths at Göbekli Tepe",
+    publisher: "German Archaeological Institute · Tepe Telegrams",
+    publishedYear: 2016,
+    accessedOn: "2026-07-29",
+    url: "https://www.dainst.blog/the-tepe-telegrams/2016/05/03/how-did-they-do-it-making-and-moving-monoliths-at-gobekli-tepe/",
+    kind: "official-record",
+    note: "Project discussion of local limestone quarry evidence, unfinished pillars and the scale of central T-pillars."
+  },
+  "dai-gobekli-pillars": {
+    id: "dai-gobekli-pillars",
+    title: "The current distribution of sites with T-shaped pillars",
+    publisher: "German Archaeological Institute · Tepe Telegrams",
+    publishedYear: 2016,
+    accessedOn: "2026-07-29",
+    url: "https://www.dainst.blog/the-tepe-telegrams/2016/05/08/the-current-distribution-of-sites-with-t-shaped-pillars/",
+    kind: "official-record",
+    note: "Project synthesis of pillar scale, arms, hands, clothing details, animal reliefs and related regional sites."
+  },
+  "dai-tas-tepeler": {
+    id: "dai-tas-tepeler",
+    title: "Taş Tepeler: the discovery of a Neolithic cultural landscape",
+    publisher: "German Archaeological Institute",
+    accessedOn: "2026-07-29",
+    url: "https://www.dainst.org/en/newsroom/tas-tepeler-die-entdeckung-einer-neolithischen-kulturlandschaft/792",
+    kind: "official-record",
+    note: "Regional research framing Göbekli Tepe among multiple early-Neolithic sites around Şanlıurfa."
+  },
+  "plos-gobekli-cereals": {
+    id: "plos-gobekli-cereals",
+    title: "Cereal processing at Early Neolithic Göbekli Tepe, southeastern Turkey",
+    publisher: "PLOS ONE",
+    publishedYear: 2019,
+    accessedOn: "2026-07-29",
+    url: "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0215214",
+    kind: "primary-research",
+    note: "Integrated analysis of more than 7,000 grinding tools, their use-wear, spatial distribution and depositional contexts."
+  },
+  "antiquity-gobekli-feasting": {
+    id: "antiquity-gobekli-feasting",
+    title: "The role of cult and feasting in the emergence of Neolithic communities",
+    publisher: "Antiquity",
+    publishedYear: 2012,
+    accessedOn: "2026-07-29",
+    url: "https://www.cambridge.org/core/journals/antiquity/article/role-of-cult-and-feasting-in-the-emergence-of-neolithic-communities-new-evidence-from-gobekli-tepe-southeastern-turkey/A1AA4FB20657599F859860D94CCD090E",
+    kind: "primary-research",
+    note: "Influential excavation-team interpretation connecting monumentality, gathering, food and social cohesion; treated as interpretation rather than final causal proof."
+  },
+  "cambridge-gobekli-geometry": {
+    id: "cambridge-gobekli-geometry",
+    title: "Geometry and Architectural Planning at Göbekli Tepe, Turkey",
+    publisher: "Cambridge Archaeological Journal",
+    publishedYear: 2020,
+    accessedOn: "2026-07-29",
+    url: "https://www.cambridge.org/core/journals/cambridge-archaeological-journal/article/geometry-and-architectural-planning-at-gobekli-tepe-turkey/2CBAF416E33AFE6496B73710A2F42FF9",
+    kind: "primary-research",
+    note: "Formal architectural analysis proposing planned geometric relationships among several monumental buildings."
+  },
+  "archaeology-gobekli-stratigraphy": {
+    id: "archaeology-gobekli-stratigraphy",
+    title: "Mobilizing architectural formal analysis for stratigraphic decision-making",
+    publisher: "Journal of Archaeological Science: Reports",
+    publishedYear: 2024,
+    accessedOn: "2026-07-29",
+    url: "https://www.sciencedirect.com/science/article/pii/S2352226724000825",
+    kind: "primary-research",
+    note: "Architectural formal analysis used to investigate building sequence and unresolved stratigraphic relationships."
+  },
+  "cambridge-gobekli-relationality": {
+    id: "cambridge-gobekli-relationality",
+    title: "Relationality, Immanence, Hierarchy: The Nature and Culture of Being(s) at Göbekli Tepe",
+    publisher: "Cambridge Archaeological Journal",
+    publishedYear: 2025,
+    accessedOn: "2026-07-29",
+    url: "https://www.cambridge.org/core/journals/cambridge-archaeological-journal/article/relationality-immanence-hierarchy-the-nature-and-culture-of-beings-at-gobekli-tepe/BFD2AB47632CB6389F90705901766DA7",
+    kind: "primary-research",
+    note: "Recent interpretive study of human, animal and pillar relations; used to expose competing readings rather than establish one meaning."
+  },
+  "unesco-gobekli-conservation-2025": {
+    id: "unesco-gobekli-conservation-2025",
+    title: "Decision 47 COM 7B.130: Göbekli Tepe",
+    publisher: "UNESCO World Heritage Committee",
+    publishedYear: 2025,
+    accessedOn: "2026-07-29",
+    url: "https://whc.unesco.org/en/decisions/8854",
+    kind: "official-record",
+    note: "Current conservation decision urging limits on further excavation and intervention pending comprehensive conservation and management plans."
   },
   "unesco-stonehenge": {
     id: "unesco-stonehenge",
