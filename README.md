@@ -4,21 +4,26 @@
 
 > We neither dismiss mystery nor manufacture it.
 
-## V1 production foundation
+## Canonical production
 
-This repository contains the real Next.js application, the typed claim and source registries, the editorial operating system, the Supabase schema, CI workflows, and the stable standalone field edition used as a rollback fallback.
+This repository is the single source of truth for the Atlas Next.js application, typed claim and source registries, editorial operating system, review circle, discovery feed, Supabase schema, CI workflows and rollback edition.
 
-V1 release candidate: https://atlas-of-the-sacred-v1-rc.vercel.app  
-Legacy public edition: https://atlas-of-the-sacred.vercel.app
+- Production branch: `main`
+- Canonical origin: configured through `NEXT_PUBLIC_SITE_URL`
+- Production runbook: [`docs/PRODUCTION_RUNBOOK.md`](docs/PRODUCTION_RUNBOOK.md)
+- V1.0 release plan: [`docs/V1_RELEASE_PLAN.md`](docs/V1_RELEASE_PLAN.md)
+- Master tracker: https://github.com/mikelninh/atlas-of-the-sacred/issues/8
 
-V1.0 release plan: [`docs/V1_RELEASE_PLAN.md`](docs/V1_RELEASE_PLAN.md)  
-Master tracker: https://github.com/mikelninh/atlas-of-the-sacred/issues/8
+Feature-specific Vercel URLs are preview and historical artifacts. A release becomes production only after the exact `main` build passes the seven-route smoke test and is promoted to the canonical alias.
 
-## Launch routes
+## Institutional routes
 
 - `/` — The Living Centre and Purpose Compass
 - `/journeys/common-thread/` — the flagship guided journey
 - `/sites/giza/` — the first deep portal
+- `/sites/gobekli-tepe/` — the second deep portal and active prototype
+- `/dispatches/` — claim-aware research updates
+- `/review/` — the Founding Review Circle
 - `/editorial/` — the evidence and editorial operating system
 
 ## Architecture
@@ -32,11 +37,11 @@ Pages arrange knowledge; they do not own factual prose. Stable claim IDs connect
 ```text
 app/                    Next.js routes and composition
 components/             Reusable visitor and editorial interfaces
-content/                Typed claims, sources, sites and journeys
+content/                Typed claims, sources, sites, journeys and dispatches
 lib/repository/         Storage-independent repository contract
 supabase/schemas/       Production database design and RLS
-scripts/                Validation, reports and source-health checks
-docs/                   Editorial, deployment and release standards
+scripts/                Validation, reports, smoke tests and source health
+ docs/                  Editorial, deployment and release standards
 site/                   Stable standalone fallback edition
 .github/workflows/      Continuous quality and source monitoring
 ```
@@ -50,18 +55,20 @@ npm run report:editorial
 npm run dev
 ```
 
-## Quality gate
+## Quality and release gates
 
 ```bash
 npm run quality
 npm run build
+npm run smoke:static
+ATLAS_BASE_URL=https://your-preview.example npm run smoke:routes
 ```
 
 The source-health check is intentionally non-destructive: a blocked URL creates an editorial task; it does not automatically invalidate a historical claim.
 
 ## Deployment
 
-Read [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md). Pull requests should receive Vercel previews; reviewed merges to `main` become production deployments.
+Read [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md). Pull requests should receive isolated previews; reviewed merges to `main` become production candidates. Promotion happens only after route, metadata and rollback verification.
 
 ## Editorial standards
 
@@ -69,3 +76,4 @@ Read [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md). Pull requests should receive Ve
 - [`docs/EDITORIAL_WORKFLOW.md`](docs/EDITORIAL_WORKFLOW.md)
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 - [`docs/IMAGE_CREDITS.md`](docs/IMAGE_CREDITS.md)
+- [`docs/FOUNDING_REVIEW_CIRCLE.md`](docs/FOUNDING_REVIEW_CIRCLE.md)
