@@ -13,6 +13,9 @@ import { GizaExpeditionIntro } from "@/components/giza/GizaExpeditionIntro";
 import { GizaJourneyProgress } from "@/components/giza/GizaJourneyProgress";
 import { GizaChapterBridge } from "@/components/giza/GizaChapterBridge";
 import { GizaReturn } from "@/components/giza/GizaReturn";
+import { GobekliPortalIntro } from "@/components/gobekli/GobekliPortalIntro";
+import { CircleOfPresences } from "@/components/gobekli/CircleOfPresences";
+import { GobekliReturn } from "@/components/gobekli/GobekliReturn";
 import { ClaimCard } from "@/components/claim/ClaimCard";
 
 export function generateStaticParams() {
@@ -22,7 +25,11 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const site = getSite(slug);
-  return site ? { title: site.name, description: `${site.name}: an evidence-led immersive site portal.` } : {};
+  return site ? {
+    title: site.name,
+    description: `${site.name}: an evidence-led immersive site portal.`,
+    alternates: { canonical: `/sites/${site.slug}/` }
+  } : {};
 }
 
 const modules = {
@@ -72,12 +79,73 @@ const chapterBridges: Record<string, { number: string; prompt: string; nextId?: 
   },
 };
 
+const gobekliDescriptions: Record<string, string> = {
+  "neolithic-landscape": "Place the hill inside centuries of change, apparent habitation and a regional network rather than treating it as an isolated miracle.",
+  "work-of-gathering": "Follow the local stone, cereal processing and coordination that made repeated gathering materially possible.",
+  "building-biographies": "Separate repair, deposition, collapse and sediment movement from the popular story of one deliberate site-wide burial.",
+};
+
 export default async function SitePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const site = getSite(slug);
   if (!site) notFound();
   const allClaims = getClaims(site.modules.flatMap((module) => module.claimIds));
   const uniqueClaims = [...new Map(allClaims.map((claim) => [claim.id, claim])).values()];
+
+  if (site.id === "gobekli-tepe") {
+    const evidenceModules = site.modules.filter((module) => ["neolithic-landscape", "work-of-gathering", "building-biographies"].includes(module.id));
+    return (
+      <>
+        <SiteHero site={site} />
+        <GobekliPortalIntro />
+
+        <section className="site-chapter gobekli-map-chapter" id="gobekli-chapter-1">
+          <div className="chapter-heading">
+            <p className="eyebrow">Chapter 01 · Evidence before spectacle</p>
+            <h2>A hill inside a changing world</h2>
+            <p>{gobekliDescriptions["neolithic-landscape"]}</p>
+          </div>
+          <div className="gobekli-evidence-strip">
+            {getClaims(site.modules[0].claimIds).map((claim) => <ClaimCard claim={claim} key={claim.id} />)}
+          </div>
+        </section>
+
+        <section className="site-chapter gobekli-presence-chapter" id="circle-of-presences">
+          <div className="chapter-heading">
+            <p className="eyebrow">Chapter 02 · First interaction prototype</p>
+            <h2>The Circle of Presences</h2>
+            <p>Move between documented architecture, human-like features and animal imagery without turning the schematic into a recovered ceremony.</p>
+          </div>
+          <CircleOfPresences />
+        </section>
+
+        {evidenceModules.slice(1).map((module, index) => (
+          <section className="site-chapter gobekli-map-chapter" id={`gobekli-chapter-${index + 3}`} key={module.id}>
+            <div className="chapter-heading gobekli-mapped-heading">
+              <p className="eyebrow">Mapped next · evidence ready</p>
+              <h2>{module.title}</h2>
+              <p>{gobekliDescriptions[module.id]}</p>
+              <span className="gobekli-prototype-label">Interaction design follows specialist review of the evidence map.</span>
+            </div>
+            <div className="gobekli-evidence-strip">
+              {getClaims(module.claimIds).map((claim) => <ClaimCard claim={claim} key={claim.id} />)}
+            </div>
+          </section>
+        ))}
+
+        <GobekliReturn />
+
+        <section className="evidence-registry" id="evidence">
+          <div className="chapter-heading">
+            <p className="eyebrow">Traceable knowledge</p>
+            <h2>Göbekli Tepe evidence registry</h2>
+            <p>Every factual statement used by the prototype appears below with its sources, evidence status, review date, interpretation and limits.</p>
+          </div>
+          <div className="registry-grid">{uniqueClaims.map((claim) => <ClaimCard claim={claim} key={claim.id} />)}</div>
+        </section>
+      </>
+    );
+  }
 
   if (site.id !== "giza") {
     return (
