@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { getClaim } from "@/lib/content";
 import { EvidenceBadge } from "@/components/claim/EvidenceBadge";
+import { ClaimDrawer } from "@/components/giza/ClaimDrawer";
 
 export function CardinalAlignment() {
   const [mode, setMode] = useState<"measurement" | "method">("measurement");
@@ -41,6 +42,7 @@ export function CardinalAlignment() {
         <p>{claim.statement}</p>
         <div className="giza-insight"><span>Interpretation</span><p>{claim.interpretation}</p></div>
         <div className="limit-box"><span>What this does not prove</span>{claim.doesNotProve}</div>
+        <ClaimDrawer claimId={claim.id} label={mode === "measurement" ? "Open measurement evidence" : "Open the debated model"} />
       </aside>
     </div>
   );

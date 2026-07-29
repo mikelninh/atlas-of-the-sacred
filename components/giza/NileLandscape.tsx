@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { getClaim } from "@/lib/content";
 import { EvidenceBadge } from "@/components/claim/EvidenceBadge";
+import { ClaimDrawer } from "@/components/giza/ClaimDrawer";
 
 const phases = [
   { id: "old", label: "Old Kingdom river world", note: "Interpretive reconstruction based on landscape research." },
@@ -49,6 +50,7 @@ export function NileLandscape() {
         <p>{claim.statement}</p>
         <div className="giza-insight"><span>What changes in the story</span><p>{claim.interpretation}</p></div>
         <div className="limit-box"><span>What this does not prove</span>{claim.doesNotProve}</div>
+        <ClaimDrawer claimId={claim.id} label="Open landscape evidence" />
       </aside>
     </div>
   );

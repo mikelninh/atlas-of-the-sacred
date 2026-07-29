@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { getClaim } from "@/lib/content";
 import { EvidenceBadge } from "@/components/claim/EvidenceBadge";
+import { ClaimDrawer } from "@/components/giza/ClaimDrawer";
 
 const places = [
   { id: "valley", label: "Valley temple + harbor", x: 82, y: 76, claimId: "giza-complex-route", movement: "Arrive at the riverward edge." },
@@ -51,6 +52,7 @@ export function RoyalComplexMap() {
         <p>{claim.statement}</p>
         <div className="giza-insight"><span>Human reading</span><p>{claim.interpretation}</p></div>
         <div className="limit-box"><span>What this does not prove</span>{claim.doesNotProve}</div>
+        <ClaimDrawer claimId={claim.id} label="Open evidence for this place" />
         <div className="module-step-actions">
           <button onClick={() => move(-1)}>← Previous</button>
           <button onClick={() => move(1)}>Next place →</button>
