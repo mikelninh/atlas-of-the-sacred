@@ -9,7 +9,12 @@ export function generateStaticParams() { return Object.values(journeys).map((jou
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const journey = getJourney(slug);
-  return journey ? { title: journey.title, description: journey.description } : {};
+  return journey ? {
+    title: journey.title,
+    description: journey.description,
+    alternates: { canonical: `/journeys/${journey.slug}/` },
+    openGraph: { title: journey.title, description: journey.description, url: `/journeys/${journey.slug}/` }
+  } : {};
 }
 
 export default async function JourneyPage({ params }: { params: Promise<{ slug: string }> }) {
