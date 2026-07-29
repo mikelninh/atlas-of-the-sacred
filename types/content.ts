@@ -60,6 +60,15 @@ export interface Site {
   modules: SiteModule[];
 }
 
+export type JourneyGestureKind =
+  | "gather"
+  | "watch"
+  | "invite-light"
+  | "endure"
+  | "descend"
+  | "flow"
+  | "walk";
+
 export interface JourneyStep {
   id: string;
   title: string;
@@ -74,6 +83,11 @@ export interface JourneyStep {
   imageLabel: string;
   claimIds: string[];
   reflection: string;
+  gestureKind: JourneyGestureKind;
+  gestureInstruction: string;
+  gestureCompletion: string;
+  culturalBoundary: string;
+  carryForward: string;
 }
 
 export interface Journey {
