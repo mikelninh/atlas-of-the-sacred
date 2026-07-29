@@ -10,7 +10,7 @@ const chapters = [
 
 export function GobekliPortalIntro() {
   return (
-    <section className="gobekli-threshold" aria-labelledby="gobekli-threshold-title">
+    <section id="field-note" className="gobekli-threshold" aria-labelledby="gobekli-threshold-title">
       <div className="gobekli-threshold-copy">
         <p className="eyebrow">Göbekli Tepe · Deep portal prototype</p>
         <EvidenceBadge status="established" />
